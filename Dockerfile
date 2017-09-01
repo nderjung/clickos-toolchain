@@ -1,5 +1,20 @@
-FROM busybox
+FROM pivotaldata/centos-gcc-toolchain:6-slim
 
-RUN apt-get update
+RUN yum install -y git patch texinfo
 
+ENV BUILD_ROOT /build
+ENV MINIOS_ROOT $BUILD_ROOT/minios
+ENV TOOLCHAIN_ROOT $BUILD_ROOT/toolchain
+ENV CLICKOS_ROOT $BUILD_ROOT/clickos
+ENV XEN_ROOT $BUILD_ROOT/xen-4.9.0
 
+RUN git clone https://github.com/cnplab/mini-os.git $MINIOS_ROOT
+RUN git clone https://github.com/cnplab/toolchain.git $TOOLCHAIN_ROOT
+RUN wget -O /tmp/xen.tar.gz https://downloads.xenproject.org/release/xen/4.9.0/xen-4.9.0.tar.gz && \
+    tar -xzvf /tmp/xen.tar.gz -C $BUILD_ROOT
+RUN make -C $TOOLCHAIN_ROOT all
+
+VOLUME $BUILD_ROOT
+WORKDIR $BUILD_ROOT
+
+ENTRYPOINT ["bash"]
