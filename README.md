@@ -1,6 +1,6 @@
 # ClickOS Toolchain Container
 
-This is the containerised vesion of [ClickOs' toolchain](https://github.com/cnplab/toolchain/).
+This is the containerised vesion of [ClickOS' toolchain](https://github.com/cnplab/toolchain/).
 It serves as quick start method for developing applications for Click OS.
 
 To use it, simply pull it and run it:
