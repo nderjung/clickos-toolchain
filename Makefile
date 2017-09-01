@@ -9,5 +9,10 @@ build:
 		-t $(CONTAINER_NAME):$(CONTAINER_VERSION) \
 		.
 
+run:
+	@echo "Running..."
+	docker run -it --rm \
+		$(CONTAINER_NAME):$(CONTAINER_VERSION)
+
 clean:
 	@echo "Cleaning..."
