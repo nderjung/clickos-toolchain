@@ -3,8 +3,8 @@ CONTAINER_VERSION=0.1.1
 
 .PHONY: build clean
 
-build:
-	@echo "Building..."
+container:
+	@echo "Building container..."
 	docker build \
 		-t $(CONTAINER_NAME):$(CONTAINER_VERSION) \
 		.
